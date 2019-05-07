@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-8 col-md-8">
+
+      <div class="w-75">
+        <form novalidate [formGroup]="myForm">
+          <div *ngIf="success">
+            <p>Thank you</p>
+          </div>
+
+          <!-- First Name -->
+          <span class="promptmessage" *ngIf="myForm.controls.firstname.invalid && myForm.controls.firstname.touched || allErrors">
+            <div *ngIf="myForm.controls.firstname.errors.required">
+              Please enter your First Name.
+            </div>
+            <div *ngIf="myForm.controls.firstname.errors.minlength">
+              Your first name shall be at least 2 characters.
+            </div>
+            <div *ngIf="myForm.controls.firstname.errors.maxlength">
+              Your first name shall no more than 50 characters.
+            </div>
+          </span>
+          <input class="form-control" placeholder="First Name" formControlName="firstname" type="text">
+
+          <br>
+
+          <!-- Last Name -->
+          <span class="promptmessage" *ngIf="myForm.controls.lastname.invalid && myForm.controls.lastname.touched || allErrors">
+            <div *ngIf="myForm.controls.lastname.errors.required">
+              Please enter your Last Name.
+            </div>
+            <div *ngIf="myForm.controls.lastname.errors.minlength">
+              Your last name shall be at least 2 characters.
+            </div>
+            <div *ngIf="myForm.controls.lastname.errors.maxlength">
+              Your last name shall no more than 50 characters.
+            </div>
+          </span>
+          <input class="form-control" placeholder="Last Name" formControlName="lastname" type="text">
+
+          <br>
+
+          <!-- Email -->
+          <span class="promptmessage"
+            *ngIf="myForm.controls.email.invalid && myForm.controls.email.touched || allErrors">
+            <div *ngIf="myForm.controls.email.errors.required">
+              Please input yout E-mail.
+            </div>
+            <div *ngIf="myForm.controls.email.errors.email">
+              Incorrect email entered.
+            </div>
+
+          </span>
+          <input class="form-control" placeholder="Email" formControlName="email" type="text">
+
+
+          <br>
+
+          <!-- Phone -->
+          <span class="promptmessage"
+            *ngIf="myForm.controls.phone.invalid && myForm.controls.phone.touched || allErrors">
+            <div *ngIf="myForm.controls.phone.errors.required">
+              Please input yout Phone number.
+            </div>
+            <div *ngIf="myForm.controls.phone.errors.minlength">
+              Phone number should be at least 7 characters.
+            </div>
+            <div *ngIf="myForm.controls.phone.errors.maxlength">
+              Phone number should be at least 7 characters.
+            </div>
+            <div *ngIf="myForm.controls.phone.errors.pattern">
+              Phone number should be numbers.
+            </div>
+          </span>
+          <input class="form-control" placeholder="Phone number" formControlName="phone" type="text">
+
+          <br>
+
+          <!-- DOB -->
+          <span class="promptmessage"
+            *ngIf="myForm.controls.dob.invalid && myForm.controls.dob.touched || allErrors">
+            <div *ngIf="myForm.controls.dob.errors.required">
+              Please input yout date of birth.
+            </div>
+            
+            
+          </span>
+          <input id="date" type="date" class="datepicker"formControlName="dob" >
+
+          <br>
+          <br>
+          <!-- message -->
+          <span class="promptmessage" *ngIf="myForm.controls.message.invalid && myForm.controls.message.touched">
+            <div *ngIf="myForm.controls.message.errors.required">
+              Please input yout message.
+            </div>
+            <div *ngIf="myForm.controls.message.errors.minlength">
+              The character length of your message should be greater than 10 characters.
+            </div>
+          </span>
+          <textarea class="form-control" placeholder="Write your message here!" formControlName="message"
+            rows="7"></textarea>
+        </form>
+
+        <br>
+
+        <span class="promptmessage">
+          <div *ngIf="!success || myForm.invalid" >
+            {{errorMessage}}
+          </div>
+        </span>
+        <button (click)="onSubmit()" class="btn btn-primary btn-block btn-lg"> Submit </button>
+      </div>
+
+    </div>
