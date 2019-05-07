@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, FormArray  } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
@@ -10,28 +10,25 @@ export class ContactUsComponent implements OnInit {
   submitted = false;
   errorMessage: string;
   success=false;
-  arr=[
-    
-  ]
+  arr=[]
   constructor( public fb:  FormBuilder) { }
 
   ngOnInit() {
+      this.createForm()
+  };
+
+  //Create Form 
+  createForm(){
     this.myForm = this.fb.group({
       firstname: ['',[Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       lastname:['',[Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       email: ['',[Validators.required, Validators.email]],
       phone:['',[Validators.required,Validators.minLength(7),Validators.maxLength(16), Validators.pattern(/^[0-9]+(\.?[0-9]+)?$/)]],
       dob:['',[Validators.required, ]],
-      message:['',[Validators.required, Validators.minLength(10)]],
-      
-    })
-  };
+      message:['',[Validators.required, Validators.minLength(10),Validators.maxLength(200)]],
+  })
+}
 
-  customDobValidator(){
-    if (this.myForm.value.dob<1/1/1950){
-      return this.errorMessage="Date of birth should not earlier than 1950."
-    }
-  }
 
 
 
@@ -41,7 +38,7 @@ export class ContactUsComponent implements OnInit {
     // stop here if form is invalid
     
     
-    if (this.myForm.invalid) {
+    if (this.myForm.invalid || this.myForm.dirty) {
       console.log(this.myForm)
       this.errorMessage='Please fill all input.'
       this.success=false;
@@ -55,3 +52,4 @@ export class ContactUsComponent implements OnInit {
   }
  
 }
+

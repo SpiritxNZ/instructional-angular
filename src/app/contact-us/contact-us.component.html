@@ -9,7 +9,7 @@
           </div>
 
           <!-- First Name -->
-          <span class="promptmessage" *ngIf="myForm.controls.firstname.invalid && myForm.controls.firstname.touched || allErrors">
+          <span class="promptmessage" *ngIf="myForm.controls.firstname.invalid && myForm.controls.firstname.touched || dirty">
             <div *ngIf="myForm.controls.firstname.errors.required">
               Please enter your First Name.
             </div>
@@ -25,7 +25,7 @@
           <br>
 
           <!-- Last Name -->
-          <span class="promptmessage" *ngIf="myForm.controls.lastname.invalid && myForm.controls.lastname.touched || allErrors">
+          <span class="promptmessage" *ngIf="myForm.controls.lastname.invalid && myForm.controls.lastname.touched || dirty">
             <div *ngIf="myForm.controls.lastname.errors.required">
               Please enter your Last Name.
             </div>
@@ -42,7 +42,7 @@
 
           <!-- Email -->
           <span class="promptmessage"
-            *ngIf="myForm.controls.email.invalid && myForm.controls.email.touched || allErrors">
+            *ngIf="myForm.controls.email.invalid && myForm.controls.email.touched || dirty">
             <div *ngIf="myForm.controls.email.errors.required">
               Please input yout E-mail.
             </div>
@@ -58,7 +58,7 @@
 
           <!-- Phone -->
           <span class="promptmessage"
-            *ngIf="myForm.controls.phone.invalid && myForm.controls.phone.touched || allErrors">
+            *ngIf="myForm.controls.phone.invalid && myForm.controls.phone.touched || dirty">
             <div *ngIf="myForm.controls.phone.errors.required">
               Please input yout Phone number.
             </div>
@@ -78,7 +78,7 @@
 
           <!-- DOB -->
           <span class="promptmessage"
-            *ngIf="myForm.controls.dob.invalid && myForm.controls.dob.touched || allErrors">
+            *ngIf="myForm.controls.dob.invalid && myForm.controls.dob.touched || dirty">
             <div *ngIf="myForm.controls.dob.errors.required">
               Please input yout date of birth.
             </div>
@@ -90,12 +90,15 @@
           <br>
           <br>
           <!-- message -->
-          <span class="promptmessage" *ngIf="myForm.controls.message.invalid && myForm.controls.message.touched">
+          <span class="promptmessage" *ngIf="myForm.controls.message.invalid && myForm.controls.message.touched || dirty">
             <div *ngIf="myForm.controls.message.errors.required">
               Please input yout message.
             </div>
             <div *ngIf="myForm.controls.message.errors.minlength">
               The character length of your message should be greater than 10 characters.
+            </div>
+            <div *ngIf="myForm.controls.message.errors.maxlength">
+              The character length of your message should be no more than 200 characters.
             </div>
           </span>
           <textarea class="form-control" placeholder="Write your message here!" formControlName="message"
@@ -104,6 +107,7 @@
 
         <br>
 
+        <!-- submit -->
         <span class="promptmessage">
           <div *ngIf="!success || myForm.invalid" >
             {{errorMessage}}
