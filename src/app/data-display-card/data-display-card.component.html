@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
-    <div *ngFor =" let i of Comments" class="d-flex align-items-stretch">
+    <div *ngFor =" let i of Comments " class="d-flex align-items-stretch">
       <div class=" card ">
           <div class="card-body ">
             <p>{{i.id}}</p>
             <p>{{i.name}}</p>
             <p>{{i.email}}</p>
-            <p>{{i.body}}</p>
+            <p>{{i.body| slice:0:50}}</p>
+           
           </div>
       </div>
     </div>
