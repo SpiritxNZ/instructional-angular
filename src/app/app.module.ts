@@ -1,27 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {  HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule,FormsModule  } from '@angular/forms';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DataDisplayComponent } from './data-display/data-display.component';
 import { NavbarComponent} from './navbar/navbar.component';
-
+import {AppRouting} from './app-routing.module';
+import { DataDisplayCardComponent } from './data-display-card/data-display-card.component'
+import { CommentsFormComponent } from './Comments-Form/Comments-Form.component';
 
 
 @NgModule({
    declarations: [
-      AppComponent,     
+      AppComponent,
       ContactUsComponent,
       DataDisplayComponent,
-     
       NavbarComponent,
+      DataDisplayCardComponent,
+      CommentsFormComponent
    ],
    imports: [
-      BrowserModule,   
+      BrowserModule,
       FormsModule,
       ReactiveFormsModule,
-
+      AppRouting,
+      HttpClientModule
    ],
    providers: [],
    bootstrap: [

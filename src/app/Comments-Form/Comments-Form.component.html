@@ -1,0 +1,57 @@
+<div class="container">
+  <br>
+  <div>
+    Leave Comments Here
+  </div>
+
+  <div class="row w-75">
+    <div class="col-12 col-lg-8 col-md-8 ">
+        <form novalidate [formGroup]="myForm" >
+            <div *ngIf="success">
+                <p>Thank you</p>
+              </div>
+
+        <!-- input Title -->
+        <span class="promptmessage" *ngIf="myForm.controls.title.invalid && myForm.controls.title.touched || dirty">
+            <div *ngIf="myForm.controls.title.errors.required">
+              Please enter your title.
+            </div>
+            <div *ngIf="myForm.controls.title.errors.minlength">
+              Your first name shall be at least 2 characters.
+            </div>
+            
+          </span>
+          <input class="form-control" placeholder="title" formControlName="title" type="text">
+          <br>
+
+          <!-- input comments -->
+          <span class="promptmessage" *ngIf="myForm.controls.comments.invalid && myForm.controls.comments.touched || dirty">
+              <div *ngIf="myForm.controls.comments.errors.required">
+                Please leave your Comments.
+              </div>
+              <div *ngIf="myForm.controls.comments.errors.minlength">
+                The character length of your comments should be greater than 10 characters.
+              </div>
+              <div *ngIf="myForm.controls.comments.errors.maxlength">
+                The character length of your message should be no more than 200 characters.
+              </div>
+            </span>
+            <textarea class="form-control" placeholder="Write your comments here!" formControlName="comments"
+              rows="7"></textarea>
+        
+        </form>
+        <br>
+
+         <!-- submit -->
+         <span class="promptmessage">
+            <div *ngIf="!success || myForm.invalid" >
+              {{errorMessage}}
+            </div>
+          </span>
+          <button (click)="onSubmit()" class="btn btn-primary btn-block btn-lg"> Submit </button>
+        </div>
+  
+      </div>
+
+
+    </div>

@@ -38,16 +38,16 @@ export class ContactUsComponent implements OnInit {
     // stop here if form is invalid
     
     
-    if (this.myForm.invalid || this.myForm.dirty) {
+    if (this.myForm.invalid ) {
       console.log(this.myForm)
       this.errorMessage='Please fill all input.'
-      this.success=false;
+      this.success=false; 
       return
         }
     else{
       console.warn('success')
       this.success=true;
-      this.arr.push(this.myForm.value)
+   
         }
   }
  

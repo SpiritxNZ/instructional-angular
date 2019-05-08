@@ -1,3 +1,24 @@
-<p>
-  data-display works!
-</p>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>UserId</th>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let i of userList">
+        <th>{{i.userId}}</th>
+        <th>{{i.id}}</th>
+        <th>{{i.title}}</th>
+        <th>{{i.body}}</th>
+      </tr>
+    </tbody>
+
+    {{errorMessage}}
+
+  </table>
+</div>
