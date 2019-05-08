@@ -8,6 +8,7 @@
             <p>{{i.email}}</p>
             <p>{{i.body| slice:0:50}}</p>
            
+            <a [routerLink]="['/data-display-card/'] + i.id">Details</a>
           </div>
       </div>
     </div>

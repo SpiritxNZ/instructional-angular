@@ -10,7 +10,8 @@ export class DataDisplayCardComponent implements OnInit {
   private Comments
   errorMessage:string
   constructor(private http: HttpClient) { }
-
+  
+  //get data from service 
   ngOnInit() {
     this.callApi().subscribe(
       (res) => (console.log(res), this.Comments=res),
@@ -18,7 +19,10 @@ export class DataDisplayCardComponent implements OnInit {
     )
   }
 
+  //link to service
   callApi(){
     return this.http.get("https://jsonplaceholder.typicode.com/comments")
   }
+
+  
 }
