@@ -4,6 +4,7 @@ import {DataDisplayComponent} from './data-display/data-display.component';
 import {DataDisplayCardComponent}  from './data-display-card/data-display-card.component';
 import{CommentsFormComponent} from './Comments-Form/Comments-Form.component';
 import {DisplayDetailsComponent} from './display-details/display-details.component';
+import { ShowCommentsComponent } from './show-comments/show-comments.component';
 
 //set path for each page
 const routes: Routes = [  
@@ -11,7 +12,8 @@ const routes: Routes = [
     { path: 'data-display',  component: DataDisplayComponent },
     { path:'data-display-card', component:DataDisplayCardComponent},
     { path:'data-display-card/:id', component: DisplayDetailsComponent},
-    { path: 'comments-form', component:CommentsFormComponent}
+    { path: 'comments-form', component:CommentsFormComponent},
+    { path:'show-comments', component:ShowCommentsComponent},
 ];
 
 //export path 

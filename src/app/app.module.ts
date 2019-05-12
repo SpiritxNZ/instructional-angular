@@ -11,6 +11,8 @@ import {AppRouting} from './app-routing.module';
 import { DataDisplayCardComponent } from './data-display-card/data-display-card.component'
 import { CommentsFormComponent } from './Comments-Form/Comments-Form.component';
 import {DisplayDetailsComponent} from './display-details/display-details.component';
+import {RepoService} from './services/repo.service';
+import { ShowCommentsComponent } from './show-comments/show-comments.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import {DisplayDetailsComponent} from './display-details/display-details.compone
       NavbarComponent,
       DataDisplayCardComponent,
       CommentsFormComponent,
-      DisplayDetailsComponent
+      DisplayDetailsComponent,
+      ShowCommentsComponent,
+    
    ],
    imports: [
       BrowserModule,
@@ -30,7 +34,7 @@ import {DisplayDetailsComponent} from './display-details/display-details.compone
       AppRouting,
       HttpClientModule
    ],
-   providers: [],
+   providers: [RepoService],
    bootstrap: [
       AppComponent
    ]

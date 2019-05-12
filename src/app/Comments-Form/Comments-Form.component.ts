@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { RepoService } from '../services/repo.service';
 
 @Component({
   selector: 'app-Comments-Form',
@@ -12,14 +13,17 @@ export class CommentsFormComponent implements OnInit {
   submitted = false
   success = false
   errorMessage: string
-  
   successData: any
-  url = "./assets/data/comments.json"
-  constructor(public fb: FormBuilder, private http: HttpClient) { }
+  comments:string
+  newComments ={}
+  successMeg:any
+  constructor(public fb: FormBuilder, private http: HttpClient, private repo: RepoService) { }
 
   ngOnInit() {
     this.createForm();
-
+    this.repo.comments.subscribe(
+      (data)=> this.comments=data
+    )
   }
 
   createForm() {
@@ -44,27 +48,36 @@ export class CommentsFormComponent implements OnInit {
     else {
       console.warn('success')
       this.success = true;
-      this.pushData()
+      this.repo.postComments(this.myForm.value).subscribe(
+        (data)=>{this.successMeg =data;
+          console.log('success', data)
+        },
+        (err)=>{
+          this.errorMessage=err;
+          console.log('error',err)
+        }
+      )
+      
     }
   }
 
 
-  pushData(){
-    this.postdata(this.myForm).subscribe(
-      (data) => {
-      this.successData = data;
-        console.log('success', data)
-      },
-      (err) => {
-      this.errorMessage = err;
-        console.log('fail', err)
-      }
-    )
-  }
+  // pushData(){
+  //   this.postdata(this.myForm).subscribe(
+  //     (data) => {
+  //     this.successData = data;
+  //       console.log('success', data)
+  //     },
+  //     (err) => {
+  //     this.errorMessage = err;
+  //       console.log('fail', err)
+  //     }
+  //   )
+  // }
 
-  postdata(myForm) {
-    return this.http.post(this.url, myForm)
+  // postdata(myForm) {
+  //   return this.http.post(this.url, myForm)
 
 
-  }
+  // }
 }
