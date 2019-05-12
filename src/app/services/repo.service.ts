@@ -8,15 +8,15 @@ export class RepoService {
   // Behaviour subject
   url:"src/assets/data/comments.json"
   public comments = new BehaviorSubject('No comments')
-  newComments:Observable<any>
-  
+  newComments=this.comments.asObservable()
+
   constructor(private http:HttpClient) { }
-  
+ 
   getComments(){
     return this.http.get(this.url)
   } 
   
   postComments(comments){
-    return this.http.post(this.url, comments)
+    return this.comments.next(newComments)
   }
 }

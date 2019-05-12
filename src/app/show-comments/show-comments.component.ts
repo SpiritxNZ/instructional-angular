@@ -12,8 +12,8 @@ export class ShowCommentsComponent implements OnInit {
   constructor(private repo:RepoService) { }
 
   ngOnInit() {
-    this.repo.comments.subscribe(
-      (data)=> this.comments=data
+    this.repo.newComments.subscribe(
+      (data)=> {console.log(data),this.comments=data}
     )
   }
 

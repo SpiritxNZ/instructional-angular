@@ -15,14 +15,14 @@ export class CommentsFormComponent implements OnInit {
   errorMessage: string
   successData: any
   comments:string
-  newComments ={}
   successMeg:any
+
   constructor(public fb: FormBuilder, private http: HttpClient, private repo: RepoService) { }
 
   ngOnInit() {
     this.createForm();
-    this.repo.comments.subscribe(
-      (data)=> this.comments=data
+    this.repo.newComments.subscribe(
+      (data)=> {console.log(data),this.comments=data}
     )
   }
 
@@ -48,16 +48,7 @@ export class CommentsFormComponent implements OnInit {
     else {
       console.warn('success')
       this.success = true;
-      this.repo.postComments(this.myForm.value).subscribe(
-        (data)=>{this.successMeg =data;
-          console.log('success', data)
-        },
-        (err)=>{
-          this.errorMessage=err;
-          console.log('error',err)
-        }
-      )
-      
+      this.repo.postComments(this.myForm.value)
     }
   }
 
