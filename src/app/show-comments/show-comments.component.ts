@@ -8,13 +8,21 @@ import { RepoService } from '../services/repo.service';
 })
 export class ShowCommentsComponent implements OnInit {
   comments:string
- 
+  commentsArray=[]
   constructor(private repo:RepoService) { }
 
   ngOnInit() {
-    this.repo.newComments.subscribe(
+  this.getData()
+  this.commentsArray.push(this.comments)
+
+  }
+
+
+  getData(){
+     this.repo.newComments.subscribe(
       (data)=> {console.log(data),this.comments=data}
     )
   }
+
 
 }

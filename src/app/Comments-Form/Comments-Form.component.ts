@@ -14,22 +14,22 @@ export class CommentsFormComponent implements OnInit {
   success = false
   errorMessage: string
   successData: any
-  comments:string
-  successMeg:any
+  comments: string
+  successMeg: any
 
   constructor(public fb: FormBuilder, private http: HttpClient, private repo: RepoService) { }
 
   ngOnInit() {
     this.createForm();
     this.repo.newComments.subscribe(
-      (data)=> {console.log(data),this.comments=data}
+      (data) => { console.log(data), this.comments = data }
     )
   }
 
   createForm() {
     this.myForm = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(2)]],
-      comments: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]]
+    title: ['', [Validators.required, Validators.minLength(2)]],
+    comments: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]]
     })
   }
 
@@ -39,7 +39,7 @@ export class CommentsFormComponent implements OnInit {
     // stop here if form is invalid
 
 
-    if (this.myForm.invalid ) {
+    if (this.myForm.invalid) {
       console.log(this.myForm)
       this.errorMessage = 'Please fill all input.'
       this.success = false;
@@ -52,23 +52,4 @@ export class CommentsFormComponent implements OnInit {
     }
   }
 
-
-  // pushData(){
-  //   this.postdata(this.myForm).subscribe(
-  //     (data) => {
-  //     this.successData = data;
-  //       console.log('success', data)
-  //     },
-  //     (err) => {
-  //     this.errorMessage = err;
-  //       console.log('fail', err)
-  //     }
-  //   )
-  // }
-
-  // postdata(myForm) {
-  //   return this.http.post(this.url, myForm)
-
-
-  // }
 }

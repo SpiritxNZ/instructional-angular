@@ -16,7 +16,9 @@ export class RepoService {
     return this.http.get(this.url)
   } 
   
-  postComments(comments){
+  postComments(newComments){
     return this.comments.next(newComments)
   }
+
+
 }
