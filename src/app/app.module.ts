@@ -13,6 +13,7 @@ import { CommentsFormComponent } from './Comments-Form/Comments-Form.component';
 import {DisplayDetailsComponent} from './display-details/display-details.component';
 import {RepoService} from './services/repo.service';
 import { ShowCommentsComponent } from './show-comments/show-comments.component';
+import { GetCommentsJsonComponent } from './get-comments-json/get-comments-json.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ShowCommentsComponent } from './show-comments/show-comments.component';
       CommentsFormComponent,
       DisplayDetailsComponent,
       ShowCommentsComponent,
+      GetCommentsJsonComponent,
     
    ],
    imports: [
